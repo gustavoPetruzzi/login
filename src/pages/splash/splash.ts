@@ -21,7 +21,7 @@ export class SplashPage {
   ionViewDidLoad() {
     setTimeout(()=> {
       this.navCtrl.setRoot(LoginPage);
-    },15000);
+    },4000);
   }
 
 }
