@@ -14,6 +14,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 export const firebaseConfig = {
   apiKey: "AIzaSyBL7LrUdPL17ifVhMLBA0Rsu0-RLn81hF4",
   authDomain: "logueo-ffa46.firebaseapp.com",
@@ -52,7 +53,8 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AngularFireDatabase
+    AngularFireDatabase,
+    BarcodeScanner
   ]
 })
 export class AppModule {}

@@ -1,3 +1,27 @@
 page-home {
+    ion-grid{
+        height: 100%;
+    }
 
+}
+.imgHome{
+    height:30vh !important;
+    width: auto !important;
+}
+
+.mitad{
+    height: 45%;
+    
+    margin: 1%;
+}
+
+.cargarCredito{
+    background-color: blue;
+    border: 1px solid;
+    box-shadow: 5px 10px;
+}
+
+.visor{
+    
+    background-color: white;
 }

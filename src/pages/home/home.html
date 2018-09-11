@@ -1,11 +1,21 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      App 1  
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center class="mitad">
+        <img class="imgHome" src="assets/imgs/iconoQr.png">
+        <h1>Credito Actual</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mitad visor">
+      <ion-col align-self-stretch align-self-end class="">
 
+      </ion-col>
+    </ion-row>
+    
+    <ion-row class="mitad cargarCredito">
+      <ion-col align-self-stretch align-self-end class="" (click)="escanear()">
+        <h1> Cargar Credito </h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

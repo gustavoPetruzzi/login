@@ -4,13 +4,20 @@ page-login {
     -webkit-border-radius: 50px;
     border-radius: 10px;
     margin-bottom: 10px;  
+    //$button-md-large-height: 1em !important;
+
     }
+    
 }
 
 .login{
-background: cadetblue;
+//background:  #2F9D66;
 }
 .imgLogin{
-height:60vh !important;
+height:40vh !important;
 width: auto !important;
+}
+
+.boton-login{
+    margin-bottom: 20px;
 }
