@@ -21,3 +21,18 @@ width: auto !important;
 .boton-login{
     margin-bottom: 20px;
 }
+
+.spinner{
+    animation: spin 3s infinite;
+    /*
+    height: 30vh;
+    width: 20vw;
+    */
+    height: auto !important;
+    width: auto !important;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

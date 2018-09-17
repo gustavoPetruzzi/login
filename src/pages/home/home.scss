@@ -5,7 +5,7 @@ page-home {
 
 }
 .imgHome{
-    height:30vh !important;
+    height:25vh !important;
     width: auto !important;
 }
 
@@ -16,7 +16,7 @@ page-home {
 }
 
 .cargarCredito{
-    background-color: blue;
+    background-color: green;
     border: 1px solid;
     box-shadow: 5px 10px;
 }
@@ -25,3 +25,42 @@ page-home {
     
     background-color: white;
 }
+
+.boriti{
+    border: 1px solid #eee85d;
+    font-style: italic;
+    border-radius: 70px 70px 70px 70px;
+}
+
+.boton-carga{
+    color: white;
+    //font-size: 
+}
+
+.imgCamera{
+    height: 18vh !important;
+    width: auto !important;
+}
+ion-loading.my-loading-class {
+    .loading-wrapper {
+      background: transparent;
+      box-shadow: none;
+    }
+}
+
+.home{
+    scroll-content {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    ion-grid {
+        padding: 0;
+        height: 100%;
+    }
+    
+    ion-row {
+        flex: 1;
+    }
+}
+

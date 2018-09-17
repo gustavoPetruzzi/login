@@ -34,15 +34,20 @@ export class HomePage {
     this.credito = this.usuario.credito;
     console.log(this.usuario);
     this.listadoCodigos = this.firestore.collection<Codigo>('/credito').valueChanges();
+    let spinner = this.spinnerPropio();
+    spinner.present();
     this.listadoCodigos
-    .subscribe(data =>{
-      data.forEach(element => {
-        let nuevo = new Codigo();
-        nuevo.codigo = element.codigo;
-        nuevo.monto = element.monto;
-        this.codigos.push(nuevo)
-      });
-    })
+    .subscribe(
+      data =>{
+        data.forEach(element =>{
+          let nuevo = new Codigo();
+          nuevo.codigo = element.codigo;
+          nuevo.monto = element.monto;
+          this.codigos.push(nuevo);
+          console.log(this.codigos);
+        });
+        spinner.dismiss();
+      })
   }
 
   public escanear(){
@@ -66,6 +71,7 @@ export class HomePage {
     return usado;
   }
   public cargarCredito(){
+
     if(!this.usado(this.codigo)){
       let existe = false;
       this.codigos.forEach(element => {
@@ -164,5 +170,15 @@ export class HomePage {
     return fondo;
   }
 
-
+  public spinnerPropio(){
+    let spinner = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `<ion-row text-center>
+                  <img class="spinner" src="assets/imgs/calavera.png">
+                </ion-row>
+                `,
+      cssClass: 'my-loading-class',
+    })
+    return spinner;
+  }
 }

@@ -16,12 +16,12 @@
             <ion-icon name="person"></ion-icon>
             <ion-input type="password" [(ngModel)]="pass" name="Contrasena" class="item" required ></ion-input>
           </ion-item>
-          <button class="boton-login" ion-button color="danger" round large type="submit" block [disabled]="!loginForm.form.valid" >Ingresar</button>
+          <button class="boton-login" ion-button color="secondary" round large type="submit" block [disabled]="!loginForm.form.valid" >Ingresar</button>
         </div>
       </form>
     </div>
     
-    <button class="boton-registro" ion-button color="secondary" full round large (click)="registrar()">Registrarse </button>
+    <button class="boton-registro" ion-button color="primary" full round large (click)="registrar()">Registrarse </button>
     <!--
     <button ion-button color="secondary"  (click)="ingresar('admin@gmail.com')">ingresar admin </button>
     <button ion-button color="secondary" (click)="ingresar('invitado@gmail.com')">ingresar invitado </button>

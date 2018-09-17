@@ -1,21 +1,43 @@
-<ion-content padding>
+<ion-content class="home" padding>
+  <!--
   <ion-grid>
     <ion-row>
       <ion-col text-center class="mitad">
         <img class="imgHome" src="assets/imgs/iconoQr.png">
-        <h1>Credito Actual</h1>
       </ion-col>
     </ion-row>
-    <ion-row class="mitad visor">
-      <ion-col align-self-stretch align-self-end class="">
-
+    <ion-row class="mitad visor boriti">
+      <ion-col text-center align-self-stretch align-self-end class="">
+        <h1 style="font-size: 8vw;"> Credito disponible:  </h1>
+        <h1 style="font-size: 10vw;">  $ {{usuario.credito}}</h1>
       </ion-col>
     </ion-row>
     
     <ion-row class="mitad cargarCredito">
-      <ion-col align-self-stretch align-self-end class="" (click)="escanear()">
-        <h1> Cargar Credito </h1>
+      <ion-col text-center align-self-stretch align-self-end class="boton-carga" (click)="escanear()">
+        <h1 class="boton-carga"> Cargar credito </h1>
+        <img class="imgCamera" src="assets/imgs/camaraBlanca.png">
       </ion-col>
     </ion-row>
   </ion-grid>
+-->
+<ion-grid>
+  <ion-row text-center>
+    <ion-col>
+        <img class="imgHome" src="assets/imgs/iconoQr.png">
+    </ion-col>
+  </ion-row>
+  <ion-row text-center>
+    <ion-col> 
+      <h1 class="boton-carga" style="font-size: 8vw;">Credito disponible:</h1>
+      <h1  class="boton-carga" style="font-size: 10vw;"> $ {{usuario.credito}}</h1>
+    </ion-col>
+  </ion-row>
+  <ion-row text-center class="cargarCredito">
+    <ion-col  (click)="escanear()"> 
+        <h1 class="boton-carga"> Cargar credito </h1>
+        <img class="imgCamera" src="assets/imgs/camaraBlanca.png">
+    </ion-col>
+  </ion-row>
+</ion-grid>
 </ion-content>
