@@ -15,6 +15,8 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/dat
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { NativeAudio } from '@ionic-native/native-audio';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 export const firebaseConfig = {
   apiKey: "AIzaSyBL7LrUdPL17ifVhMLBA0Rsu0-RLn81hF4",
   authDomain: "logueo-ffa46.firebaseapp.com",
@@ -52,9 +54,11 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireDatabase,
-    BarcodeScanner
+    BarcodeScanner,
+    NativeAudio
   ]
 })
 export class AppModule {}

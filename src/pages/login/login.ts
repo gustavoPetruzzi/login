@@ -91,7 +91,7 @@ async login(){
     .then(result => 
       {
         esperador.dismiss();
-        let logueado:Loading = this.esperar(this.creaFondo("Logueado Correctamente","assets/imgs/logueado.png"))
+        let logueado:Loading = this.esperar(this.creaFondo("Ingreso Correcto","assets/imgs/logueado.png"))
         logueado.present();
         logueado.onDidDismiss(alto => {
           this.navCtrl.push(HomePage, {

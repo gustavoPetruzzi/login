@@ -47,20 +47,3 @@ ion-loading.my-loading-class {
       box-shadow: none;
     }
 }
-
-.home{
-    scroll-content {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    ion-grid {
-        padding: 0;
-        height: 100%;
-    }
-    
-    ion-row {
-        flex: 1;
-    }
-}
-

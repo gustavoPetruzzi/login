@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Platform } from 'ionic-angular';
 import { AngularFireAuth} from 'angularfire2/auth';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from 'angularfire2/firestore';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 import { Usuario } from "../../clases/usuario";
 import { Credito } from "../../clases/credito";
@@ -18,17 +19,26 @@ export class HomePage {
   recienCargado = 0;
   codigo:string;
   codigos:Codigo[] = [];
-  
+  orientation: String;
+  portrait: Boolean;
   listadoCodigos: Observable<Codigo[]>;
 
   constructor(
+    platform: Platform,
+    private screenOrientation: ScreenOrientation,
     public navCtrl: NavController,
     public params: NavParams,
     public loadingCtrl: LoadingController,
     private scanner: BarcodeScanner,
     private firestore: AngularFirestore
-  ) 
+    ) 
   {
+    platform.ready()
+    .then(() =>{
+      this.orientation = this.screenOrientation.type;
+      this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+    });
+
     this.usuario = new Usuario();
     this.usuario = this.params.get('usuario');
     this.credito = this.usuario.credito;
@@ -74,26 +84,31 @@ export class HomePage {
 
     if(!this.usado(this.codigo)){
       let existe = false;
+      let aCargar:Codigo;
       this.codigos.forEach(element => {
         if(this.codigo == element.codigo){
-          let cadena = "se cargo " + element.monto + " creditos!";
-          this.usuario.credito += element.monto;
-          this.usuario.usados.push(this.codigo);
-          this.guardar(cadena);
+          aCargar = new Codigo();
+          aCargar.monto = element.monto;
+          aCargar.codigo = element.codigo;
           existe =true;
         }
       });
       if(!existe){
-        let loading = this.esperar(this.creaFondo("Codigo no identificado", "assets/imgs/error.png"));
+        let loading = this.esperar(this.creaFondo("Código no identificado", "assets/imgs/error.png"));
         loading.present();
         setTimeout(() =>{
           loading.dismiss();
         }, 3000);
-
+      }
+      else if(existe){
+        let cadena = "se cargó " + aCargar.monto + " créditos!";
+        this.usuario.credito = +this.usuario.credito + +aCargar.monto;
+        this.usuario.usados.push(this.codigo);
+        this.guardar(cadena);
       }
     }
     else{
-      let loading = this.esperar(this.creaFondo("Codigo ya usado", "assets/imgs/error.png"));
+      let loading = this.esperar(this.creaFondo("Código ya usado", "assets/imgs/error.png"));
       loading.present();
       setTimeout(()=>{
         loading.dismiss();
@@ -104,7 +119,7 @@ export class HomePage {
   public guardar(mensaje:string){
     let cargando = this.spinnerCargando();
     cargando.present();
-    let loading = this.esperar(this.creaFondo(mensaje, "assets/imgs/plata.png"));
+    let loading = this.esperar(this.creaFondo(mensaje, "assets/imgs/calavera.png"));
     this.firestore
     .collection('usuarios')
     .doc(this.usuario.id)
@@ -151,7 +166,7 @@ export class HomePage {
 
   public spinnerCargando(){
     let spinner = this.loadingCtrl.create({
-      content:"Cargando Credito...",
+      content:"Cargando Crédito...",
     })
     return spinner;
   }
@@ -162,8 +177,8 @@ export class HomePage {
                  <ion-row text-center>
                    <img src="${imagen}">
                  </ion-row>
-                 <ion-row>
-                   <h1> ${mensaje} </h1>
+                 <ion-row text-center>
+                   <h1 text-center> ${mensaje} </h1>
                  </ion-row>
                </div> `;
     }
